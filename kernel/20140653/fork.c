@@ -7,7 +7,7 @@ int myFork() {
     pid_t pid;
 
     /* fork a child process */
-    pid = fork(); //pid(p)>0: pid of child process; pid(c): 0
+    pid = fork(); // pid of child process; pid(c): 0
     if (pid < 0) { /* error occurred. Child starts here */
         fprintf(stderr, "Fork Failed\n");
         return 1;

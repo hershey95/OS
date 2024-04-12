@@ -1,12 +1,16 @@
 CC=gcc
-CFLAGS=-g -Iinclude
+CFLAGS=-g -Iinclude -Wall
 LDFLAGS=-lreadline
-OBJS=kernel/kernel.o kernel/system.o kernel/20140653/fork.o
+SRCS=$(wildcard kernel/*.c kernel/20140653/*.c)
+OBJS=$(SRCS:.c=.o)
 
-all: minios
+# 최종 실행 파일
+TARGET=minios
 
-minios: $(OBJS)
-	$(CC) -o minios $(OBJS) $(LDFLAGS)
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CC) -o $@ $^ $(LDFLAGS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
